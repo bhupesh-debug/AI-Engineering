@@ -1,0 +1,4 @@
+# Runtime dependencies. numpy is optional: every demo falls back to
+# pure Python when it is absent. pytest is needed only to run tests.
+numpy
+pytest

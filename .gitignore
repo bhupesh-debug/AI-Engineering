@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+# Virtual environments
+.venv/
+venv/
+# Test caches
+.pytest_cache/
+# Editors and OS files
+.DS_Store
+*.swp
