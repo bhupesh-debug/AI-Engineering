@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" font-family="sans-serif">
+  <title>RAG vs fine-tuning decision ladder</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3864"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="740" height="380" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2"/>
+  <text x="380" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1F3864">RAG or fine-tuning? Climb only as far as the failure requires</text>
+
+  <rect x="120" y="65" width="520" height="55" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="380" y="88" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Step 1: Prompt + examples</text>
+  <text x="380" y="108" text-anchor="middle" font-size="12" fill="#333333">costs nothing but words — always try this first</text>
+
+  <rect x="120" y="140" width="520" height="55" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="380" y="163" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Step 2: Simple retrieval (RAG)</text>
+  <text x="380" y="183" text-anchor="middle" font-size="12" fill="#333333">fixes missing, stale, or made-up facts</text>
+
+  <rect x="120" y="215" width="250" height="55" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="245" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Step 3a: Complex retrieval</text>
+  <text x="245" y="258" text-anchor="middle" font-size="12" fill="#333333">knowledge exists, hard to find</text>
+
+  <rect x="390" y="215" width="250" height="55" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="515" y="238" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Step 3b: Fine-tuning</text>
+  <text x="515" y="258" text-anchor="middle" font-size="12" fill="#333333">behavior, tone, or skill is missing</text>
+
+  <rect x="120" y="290" width="520" height="55" rx="8" fill="#FCE4E4" stroke="#1F3864"/>
+  <text x="380" y="313" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Step 4: Combine both</text>
+  <text x="380" y="333" text-anchor="middle" font-size="12" fill="#333333">fine-tuned behavior + retrieved fresh facts</text>
+
+  <line x1="380" y1="120" x2="380" y2="140" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="300" y1="195" x2="245" y2="215" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="460" y1="195" x2="515" y2="215" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="245" y1="270" x2="300" y2="290" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="515" y1="270" x2="460" y2="290" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="380" y="372" text-anchor="middle" font-size="13" fill="#333333">Pick by what is failing, not by what is fashionable. See docs/decision-guide.md.</text>
+</svg>

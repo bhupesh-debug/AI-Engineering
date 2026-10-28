@@ -42,6 +42,42 @@ Post-training (SFT + RL) shapes it into a helper...
 ARCHITECTURE: guardrails + cache + feedback hold the whole system together
 ```
 
+## How to use this project — learn, run, exercise, assess, capstone
+
+This project is built as a learning path, not a tour. Work it in
+this order:
+
+1. **Learn** — read one concept section below, then follow
+   `docs/curriculum.md`, which orders all seven modules with
+   prerequisites, time estimates, and a concrete objective per
+   module.
+2. **Run** — run that concept's demos (base demo first, then the
+   deepened demo). Every demo prints its result; nothing here needs
+   an API key or a real model.
+3. **Exercise** — do the module's problem set in `exercises/`
+   before reading its solutions file. The problems are solvable
+   from this project's own material, and the solutions show the
+   arithmetic.
+4. **Assess** — take `quizzes/quiz.md` (35 questions, answer key
+   and scoring guide included) and revisit any module where you
+   missed more than one question.
+5. **Capstone** — finish with `docs/capstone.md`: design a full
+   system for a fictional company, applying all seven concepts,
+   then grade yourself against its rubric.
+
+## Diagrams
+
+- [Full architecture blueprint](assets/architecture.svg) —
+  guardrails, cache, retrieval, generation, feedback loop.
+- [RAG flow](assets/rag_flow.svg) — retrieve, then answer with
+  context.
+- [LoRA adapter diagram](assets/lora.svg) — frozen base plus
+  small trainable adapters, one per task.
+- [Speculative decoding timeline](assets/speculative.svg) —
+  draft, verify in parallel, keep the agreed prefix.
+- [RAG-vs-fine-tuning decision ladder](assets/decision_ladder.svg)
+  — climb only as far as the failure requires.
+
 ## 1. Foundations and post-training
 
 **Plain-language explanation.** A language model starts life as a
@@ -349,6 +385,7 @@ python3 src/pipeline.py   # cache hit, guardrail block, feedback log
 
 ```bash
 cd ai-engineering
+# Base demos (one per concept)
 python3 src/metrics.py       # entropy + perplexity
 python3 src/rag.py           # TF-IDF retrieval + stub answer
 python3 src/lora.py          # LoRA parameter math + trained adapter
@@ -356,7 +393,14 @@ python3 src/speculative.py   # speculative decoding simulation
 python3 src/judge.py         # AI-as-judge rubric + verbosity bias
 python3 src/defense.py       # defensive prompting, undefended vs defended
 python3 src/pipeline.py      # cache + guardrails + retrieval + feedback
-python3 -m pytest tests/ -q  # full test suite (35 tests)
+# Deepened demos (measurement, trade-offs, failure modes)
+python3 src/rag_eval.py         # hit rate, MRR, chunking comparison
+python3 src/lora_sweep.py       # rank sweep: cost vs captured value
+python3 src/spec_curve.py       # speedup curve + breakeven accuracy
+python3 src/judge_biases.py     # verbosity, position, self-enhancement
+python3 src/defense_taxonomy.py # attack types mapped to defense layers
+python3 src/pipeline_econ.py    # latency + cost per route, worked traffic
+python3 -m pytest tests/ -q  # full test suite (59 tests)
 ```
 
 Requirements: Python 3.10 or newer. `numpy` is listed in
@@ -368,15 +412,32 @@ either way. `pytest` is needed only to run the tests.
 
 ```
 README.md                  this guide
-docs/decision-guide.md     RAG vs fine-tuning, one page
+docs/
+  decision-guide.md        RAG vs fine-tuning, one page
+  curriculum.md            learning path: order, time, objectives
+  capstone.md              fictional-company design exercise + rubric
+assets/                    SVG diagrams (text, rendered by GitHub)
+  architecture.svg         full blueprint: guardrails, cache, feedback
+  rag_flow.svg             retrieve, then answer with context
+  lora.svg                 frozen base + adapters
+  speculative.svg          draft, verify in parallel, keep prefix
+  decision_ladder.svg      RAG-vs-fine-tuning ladder
 src/
   metrics.py               entropy + perplexity
   rag.py                   TF-IDF retrieval + stub answer
+  rag_eval.py              hit rate, MRR, chunking comparison
   lora.py                  LoRA math + tiny trained adapter
+  lora_sweep.py            rank sweep: cost vs captured value
   speculative.py           speculative decoding simulation
+  spec_curve.py            speedup curve + breakeven accuracy
   judge.py                 rubric judge + bias demo
+  judge_biases.py          verbosity, position, self-enhancement
   defense.py               defensive prompting demo
+  defense_taxonomy.py      attack types mapped to defense layers
   pipeline.py              cache + guardrails + retrieval + feedback
+  pipeline_econ.py         latency + cost per route
+exercises/                 one problem set + solutions per module (7 x 2)
+quizzes/quiz.md            35-question self-assessment + key + scoring
 tests/                     pytest tests, one file per demo
 requirements.txt           numpy (optional at runtime), pytest
 LICENSE                    MIT

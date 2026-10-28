@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 360" font-family="sans-serif">
+  <title>LoRA: frozen base plus small trainable adapters</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3864"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="740" height="340" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2"/>
+  <text x="380" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1F3864">LoRA: one frozen base, many small adapters</text>
+
+  <rect x="40" y="70" width="190" height="110" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="135" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Base weights W</text>
+  <text x="135" y="115" text-anchor="middle" font-size="12" fill="#333333">frozen — never retrained</text>
+  <text x="135" y="135" text-anchor="middle" font-size="12" fill="#333333">shared by every task</text>
+  <text x="135" y="155" text-anchor="middle" font-size="12" fill="#333333">512 x 512 = 262,144 (toy)</text>
+
+  <text x="270" y="130" text-anchor="middle" font-size="22" font-weight="bold" fill="#1F3864">+</text>
+
+  <rect x="300" y="70" width="120" height="110" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="360" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Adapter B</text>
+  <text x="360" y="115" text-anchor="middle" font-size="12" fill="#333333">512 x r</text>
+  <text x="360" y="135" text-anchor="middle" font-size="12" fill="#333333">trained</text>
+  <text x="360" y="155" text-anchor="middle" font-size="12" fill="#333333">tall and thin</text>
+
+  <text x="445" y="130" text-anchor="middle" font-size="18" font-weight="bold" fill="#1F3864">x</text>
+
+  <rect x="470" y="70" width="120" height="110" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="530" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Adapter A</text>
+  <text x="530" y="115" text-anchor="middle" font-size="12" fill="#333333">r x 512</text>
+  <text x="530" y="135" text-anchor="middle" font-size="12" fill="#333333">trained</text>
+  <text x="530" y="155" text-anchor="middle" font-size="12" fill="#333333">short and wide</text>
+
+  <text x="625" y="130" text-anchor="middle" font-size="22" font-weight="bold" fill="#1F3864">=</text>
+
+  <rect x="650" y="70" width="70" height="110" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="685" y="105" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">W +</text>
+  <text x="685" y="125" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">BA</text>
+  <text x="685" y="155" text-anchor="middle" font-size="12" fill="#333333">adapted</text>
+
+  <line x1="230" y1="125" x2="300" y2="125" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="420" y1="125" x2="470" y2="125" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="590" y1="125" x2="650" y2="125" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="40" y="210" width="190" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="135" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">Task 1 adapter</text>
+  <text x="135" y="255" text-anchor="middle" font-size="12" fill="#333333">swap in, same base</text>
+
+  <rect x="270" y="210" width="190" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="365" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">Task 2 adapter</text>
+  <text x="365" y="255" text-anchor="middle" font-size="12" fill="#333333">swap in, same base</text>
+
+  <rect x="500" y="210" width="190" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="595" y="235" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">Task 3 adapter</text>
+  <text x="595" y="255" text-anchor="middle" font-size="12" fill="#333333">swap in, same base</text>
+
+  <text x="380" y="310" text-anchor="middle" font-size="13" fill="#333333">Rank r sets the adapter size: r x (512 + 512) parameters. Rank 4: 4,096 vs 262,144 full.</text>
+  <text x="380" y="330" text-anchor="middle" font-size="13" fill="#333333">Toy diagram for teaching; see src/lora.py and src/lora_sweep.py.</text>
+</svg>

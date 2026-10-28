@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="sans-serif">
+  <title>RAG flow: retrieve, then answer with context</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3864"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="740" height="310" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2"/>
+  <text x="380" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1F3864">RAG flow: open-book answering</text>
+
+  <rect x="30" y="70" width="130" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="95" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Question</text>
+  <text x="95" y="115" text-anchor="middle" font-size="12" fill="#333333">what is asked?</text>
+
+  <rect x="200" y="70" width="130" height="60" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="265" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Retriever</text>
+  <text x="265" y="115" text-anchor="middle" font-size="12" fill="#333333">search + rank</text>
+
+  <rect x="370" y="70" width="150" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="445" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Knowledge base</text>
+  <text x="445" y="115" text-anchor="middle" font-size="12" fill="#333333">documents, chunked</text>
+
+  <rect x="560" y="70" width="130" height="60" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="625" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Top passages</text>
+  <text x="625" y="115" text-anchor="middle" font-size="12" fill="#333333">best matches only</text>
+
+  <line x1="160" y1="100" x2="200" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="100" x2="370" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="520" y1="100" x2="560" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="560" y="180" width="130" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="625" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Prompt + passages</text>
+  <text x="625" y="225" text-anchor="middle" font-size="12" fill="#333333">question + context</text>
+  <line x1="625" y1="130" x2="625" y2="180" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="180" width="150" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="445" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Model</text>
+  <text x="445" y="225" text-anchor="middle" font-size="12" fill="#333333">generates answer</text>
+  <line x1="560" y1="210" x2="520" y2="210" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="200" y="180" width="130" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="265" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Answer</text>
+  <text x="265" y="225" text-anchor="middle" font-size="12" fill="#333333">grounded, fresher</text>
+  <line x1="370" y1="210" x2="330" y2="210" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <text x="380" y="285" text-anchor="middle" font-size="13" fill="#333333">Without retrieval, the model answers from memory alone — and memory goes stale.</text>
+  <text x="380" y="305" text-anchor="middle" font-size="13" fill="#333333">Toy diagram for teaching; see src/rag.py and src/rag_eval.py.</text>
+</svg>

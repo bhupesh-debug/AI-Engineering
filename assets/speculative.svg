@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 330" font-family="sans-serif">
+  <title>Speculative decoding timeline: draft, verify in parallel, keep the agreed prefix</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3864"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="740" height="310" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2"/>
+  <text x="380" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1F3864">Speculative decoding: draft fast, verify in parallel</text>
+
+  <rect x="30" y="70" width="150" height="60" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="105" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Draft model</text>
+  <text x="105" y="115" text-anchor="middle" font-size="12" fill="#333333">small, fast, rough</text>
+
+  <rect x="220" y="70" width="120" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="280" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">token 1</text>
+  <text x="280" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">token 2</text>
+
+  <rect x="360" y="70" width="120" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="420" y="90" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">token 3</text>
+  <text x="420" y="110" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">token 4</text>
+
+  <text x="500" y="105" text-anchor="middle" font-size="13" fill="#333333">proposes 4 tokens</text>
+
+  <line x1="180" y1="100" x2="220" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="340" y1="100" x2="360" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="560" y="70" width="150" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="635" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Large model</text>
+  <text x="635" y="115" text-anchor="middle" font-size="12" fill="#333333">checks all 4 at once</text>
+  <line x1="480" y1="100" x2="560" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="30" y="170" width="320" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="190" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">Kept: agreed prefix (tokens 1-3)</text>
+  <text x="190" y="215" text-anchor="middle" font-size="12" fill="#333333">everything before the first mismatch</text>
+
+  <rect x="390" y="170" width="320" height="60" rx="8" fill="#FCE4E4" stroke="#1F3864"/>
+  <text x="550" y="195" text-anchor="middle" font-size="13" font-weight="bold" fill="#1F3864">Dropped: token 4 onward + 1 correction</text>
+  <text x="550" y="215" text-anchor="middle" font-size="12" fill="#333333">verifier supplies its own next token</text>
+
+  <text x="380" y="265" text-anchor="middle" font-size="13" fill="#333333">One round yields 3 kept + 1 correction = 4 tokens for roughly one large-model step.</text>
+  <text x="380" y="290" text-anchor="middle" font-size="13" fill="#333333">When the drafter is usually wrong, most rounds yield only the correction — slower than one-by-one.</text>
+  <text x="380" y="310" text-anchor="middle" font-size="13" fill="#333333">Toy diagram for teaching; see src/speculative.py and src/spec_curve.py.</text>
+</svg>

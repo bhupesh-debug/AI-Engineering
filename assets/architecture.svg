@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" font-family="sans-serif">
+  <title>AI system architecture blueprint</title>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <path d="M0,0 L9,3 L0,6 Z" fill="#1F3864"/>
+    </marker>
+  </defs>
+  <rect x="10" y="10" width="740" height="400" rx="12" fill="#FFFFFF" stroke="#1F3864" stroke-width="2"/>
+  <text x="380" y="40" text-anchor="middle" font-size="20" font-weight="bold" fill="#1F3864">Architecture blueprint: guardrails, cache, retrieval, feedback</text>
+
+  <rect x="30" y="70" width="130" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="95" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">User request</text>
+  <text x="95" y="115" text-anchor="middle" font-size="12" fill="#333333">a question arrives</text>
+
+  <rect x="200" y="70" width="130" height="60" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="265" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Cache check</text>
+  <text x="265" y="115" text-anchor="middle" font-size="12" fill="#333333">answered before?</text>
+
+  <rect x="370" y="70" width="130" height="60" rx="8" fill="#FCE4E4" stroke="#1F3864"/>
+  <text x="435" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Guardrails</text>
+  <text x="435" y="115" text-anchor="middle" font-size="12" fill="#333333">allowed? safe?</text>
+
+  <rect x="540" y="70" width="130" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="605" y="95" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Retrieval</text>
+  <text x="605" y="115" text-anchor="middle" font-size="12" fill="#333333">fetch passages</text>
+
+  <line x1="160" y1="100" x2="200" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="330" y1="100" x2="370" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="500" y1="100" x2="540" y2="100" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="540" y="180" width="130" height="60" rx="8" fill="#E2EFDA" stroke="#1F3864"/>
+  <text x="605" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Generation</text>
+  <text x="605" y="225" text-anchor="middle" font-size="12" fill="#333333">answer with context</text>
+  <line x1="605" y1="130" x2="605" y2="180" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="370" y="180" width="130" height="60" rx="8" fill="#D9E2F3" stroke="#1F3864"/>
+  <text x="435" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Answer</text>
+  <text x="435" y="225" text-anchor="middle" font-size="12" fill="#333333">returned to user</text>
+  <line x1="540" y1="210" x2="500" y2="210" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="200" y="180" width="130" height="60" rx="8" fill="#FFF2CC" stroke="#1F3864"/>
+  <text x="265" y="205" text-anchor="middle" font-size="14" font-weight="bold" fill="#1F3864">Feedback log</text>
+  <text x="265" y="225" text-anchor="middle" font-size="12" fill="#333333">did it help?</text>
+  <line x1="370" y1="210" x2="330" y2="210" stroke="#1F3864" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <path d="M 265 240 L 265 300 L 605 300 L 605 250" fill="none" stroke="#1F3864" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrow)"/>
+  <text x="435" y="290" text-anchor="middle" font-size="13" fill="#1F3864">feedback loop: ratings steer future retrieval</text>
+
+  <path d="M 265 70 L 265 40 L 95 40 L 95 70" fill="none" stroke="#1F3864" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="180" y="32" text-anchor="middle" font-size="13" fill="#1F3864">cache hit: skip straight to answer</text>
+
+  <text x="380" y="350" text-anchor="middle" font-size="13" fill="#333333">Blocked requests stop at guardrails and never reach the expensive stages.</text>
+  <text x="380" y="375" text-anchor="middle" font-size="13" fill="#333333">Toy diagram for teaching; see src/pipeline.py and src/pipeline_econ.py.</text>
+</svg>
